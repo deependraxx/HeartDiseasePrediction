@@ -57,7 +57,7 @@ The model was evaluated using the following metrics:
 To use the model, follow these steps:
 
 1. Clone the repository:
-    git clone https://github.com/yourusername/heart-disease-prediction.git
+    git clone https://github.com/deependraxx/heartdiseaseprediction.git
 2. Install the required packages:
     pip install -r requirements.txt
 3. Run the prediction script:
