@@ -46,7 +46,7 @@ The logistic regression model was developed using Python and the scikit-learn li
 
 The model was evaluated using the following metrics:
 
-- Accuracy: 85%
+- Accuracy: 81%
 - Precision: 82%
 - Recall: 88%
 - F1-score: 85%
