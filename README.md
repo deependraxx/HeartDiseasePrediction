@@ -1,76 +1,108 @@
 
-# Heart Disease Prediction using Logistic Regression
+---
 
-## Project Overview
+# Heart Disease Prediction Model
 
-This project aims to predict the presence of heart disease in patients using a logistic regression model. The model is trained on a dataset containing various medical attributes and has been evaluated for accuracy and performance.
+## Overview
+
+This project involves creating a predictive model to determine the presence of heart disease in patients based on various medical features. The model is developed using Logistic Regression and trained on a dataset containing information about patients' health indicators.
 
 ## Table of Contents
 
-- [Introduction](#introduction)
-- [Dataset](#dataset)
-- [Preprocessing](#preprocessing)
-- [Model Development](#model-development)
-- [Evaluation](#evaluation)
-- [Usage](#usage)
-- [Results](#results)
-- [Contributing](#contributing)
-- [License](#license)
+1. [Project Description](#project-description)
+2. [Dependencies](#dependencies)
+3. [Data Collection and Processing](#data-collection-and-processing)
+4. [Model Training](#model-training)
+5. [Evaluation](#evaluation)
+6. [Usage](#usage)
+7. [License](#license)
 
-## Introduction
+## Project Description
 
-Heart disease is one of the leading causes of death globally. Early prediction and diagnosis can save lives and improve the quality of life for many individuals. This project utilizes machine learning techniques, specifically logistic regression, to predict the likelihood of heart disease based on patient data.
+The goal of this project is to predict the likelihood of heart disease in patients using a logistic regression model. The dataset used contains features such as age, sex, blood pressure, cholesterol levels, and more, which are used to classify patients as either having heart disease or being healthy.
 
-## Dataset
+## Dependencies
 
-The dataset used in this project is the [Heart Disease Dataset](https://archive.ics.uci.edu/ml/datasets/Heart+Disease) from the UCI Machine Learning Repository. It contains 303 records with 14 attributes, including age, sex, chest pain type, resting blood pressure, cholesterol levels, fasting blood sugar, resting ECG results, maximum heart rate achieved, exercise-induced angina, ST depression, the slope of the peak exercise ST segment, number of major vessels, and thalassemia.
+To run this project, you will need to have the following Python libraries installed:
 
-## Preprocessing
+- `numpy`
+- `pandas`
+- `scikit-learn`
+- `matplotlib`
+- `seaborn`
 
-Data preprocessing steps include:
+You can install the necessary libraries using pip:
 
-- Handling missing values
-- Encoding categorical variables
-- Scaling numerical features
-- Splitting the dataset into training and testing sets
+```bash
+pip install numpy pandas scikit-learn matplotlib seaborn
+```
 
-## Model Development
+## Data Collection and Processing
 
-The logistic regression model was developed using Python and the scikit-learn library. Key steps include:
+The dataset used for this project is stored in `heart.csv`. It includes the following columns:
 
-1. **Feature Selection:** Identified the most significant predictors.
-2. **Model Training:** Trained the logistic regression model using the training dataset.
-3. **Hyperparameter Tuning:** Optimized the model parameters for better performance.
+- `age`: Age of the patient
+- `sex`: Gender of the patient (1 = male, 0 = female)
+- `cp`: Chest pain type
+- `trestbps`: Resting blood pressure (in mm Hg)
+- `chol`: Serum cholesterol level (in mg/dl)
+- `fbs`: Fasting blood sugar (1 = true, 0 = false)
+- `restecg`: Resting electrocardiographic results
+- `thalach`: Maximum heart rate achieved
+- `exang`: Exercise induced angina (1 = yes, 0 = no)
+- `oldpeak`: Depression induced by exercise relative to rest
+- `slope`: Slope of the peak exercise ST segment
+- `ca`: Number of major vessels colored by fluoroscopy
+- `thal`: Thalassemia (3 = normal, 6 = fixed defect, 7 = reversible defect)
+- `target`: Heart disease (1 = disease, 0 = no disease)
+
+The data is processed by handling missing values, and splitting into features (`X`) and target (`Y`).
+
+## Model Training
+
+The model is trained using Logistic Regression with the following code:
+
+```python
+from sklearn.linear_model import LogisticRegression
+
+model = LogisticRegression(max_iter=1000)
+model.fit(X_train, Y_train)
+```
 
 ## Evaluation
 
-The model was evaluated using the following metrics:
+The model is evaluated using accuracy score, confusion matrix, and classification report. These metrics help in understanding the performance of the model and its effectiveness in predicting heart disease.
 
-- Accuracy: 81%
-- Precision: 82%
-- Recall: 88%
-- F1-score: 85%
-- ROC-AUC score: 0.92
+```python
+from sklearn.metrics import accuracy_score, classification_report, confusion_matrix
+
+Y_pred = model.predict(X_test)
+accuracy = accuracy_score(Y_test, Y_pred)
+conf_matrix = confusion_matrix(Y_test, Y_pred)
+class_report = classification_report(Y_test, Y_pred)
+```
 
 ## Usage
 
-To use the model, follow these steps:
-
 1. Clone the repository:
-    git clone https://github.com/deependraxx/heartdiseaseprediction.git
-2. Install the required packages:
-    pip install -r requirements.txt
-3. Run the prediction script:
-    python predict.py
+    ```bash
+    git clone https://github.com/yourusername/heart-disease-prediction.git
+    ```
 
-## Results
+2. Navigate to the project directory:
+    ```bash
+    cd heart-disease-prediction
+    ```
 
-The logistic regression model effectively predicts the presence of heart disease with high accuracy. The ROC-AUC score of 0.92 indicates a strong ability to distinguish between patients with and without heart disease.
+3. Run the script:
+    ```bash
+    python heart_disease_prediction.py
+    ```
 
-## Contributing
-
-Contributions are welcome! Please submit a pull request or open an issue to discuss your ideas.
+Ensure that the `heart.csv` file is in the same directory as the script.
 
 ## License
 
-This project is licensed under the MIT License.
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+---
